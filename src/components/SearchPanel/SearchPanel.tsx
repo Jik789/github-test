@@ -1,5 +1,7 @@
+import styles from './SearchPanel.module.scss';
+
 function SearchPanel() {
-  return <input type="text"></input>;
+  return <input className={styles.inputSearch} type="text"></input>;
 }
 
 export default SearchPanel;

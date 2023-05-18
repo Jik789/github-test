@@ -1,7 +1,7 @@
-import Button from '../components/Button/Button';
-import SearchPanel from '../components/SearchPanel/SearchPanel';
+import Button from '../../components/Button/Button';
+import SearchPanel from '../../components/SearchPanel/SearchPanel';
 
-function MainPage() {
+function RepoCardPage() {
   return (
     <div>
       <h1>Поиск GitHub</h1>
@@ -11,4 +11,4 @@ function MainPage() {
   );
 }
 
-export default MainPage;
+export default RepoCardPage;

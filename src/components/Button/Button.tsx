@@ -3,7 +3,7 @@ import styles from './Button.module.scss';
 
 function Button({ title, setClick }: IButton) {
   return (
-    <button className={styles.test} onClick={setClick}>
+    <button className={styles.button} onClick={setClick}>
       {title}
     </button>
   );
