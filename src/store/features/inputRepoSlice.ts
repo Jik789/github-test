@@ -2,23 +2,28 @@ import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 
 export interface inputRepoState {
-  value: string;
+  inputName: string;
+  inputPage: string;
 }
 
 const initialState: inputRepoState = {
-  value: '',
+  inputName: '',
+  inputPage: '1',
 };
 
 export const inputRepoSlice = createSlice({
   name: 'inputRepo',
   initialState,
   reducers: {
-    inputRepoWrite: (state, action: PayloadAction<string>) => {
-      state.value = action.payload;
+    inputName: (state, action: PayloadAction<string>) => {
+      state.inputName = action.payload;
+    },
+    inputPage: (state, action: PayloadAction<string>) => {
+      state.inputPage = action.payload;
     },
   },
 });
 
-export const { inputRepoWrite } = inputRepoSlice.actions;
+export const { inputName, inputPage } = inputRepoSlice.actions;
 
 export default inputRepoSlice.reducer;

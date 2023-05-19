@@ -1,5 +1,6 @@
-const currentDate = (data: string) => {
-  return data.split('T')[0];
-};
+import { ITEM_FOR_PAGE } from './const';
 
-export { currentDate };
+const currentDate = (data: string) => data.split('T')[0];
+const setCountPage = (itemCount: number) => Math.ceil(itemCount / ITEM_FOR_PAGE);
+
+export { currentDate, setCountPage };

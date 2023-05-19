@@ -5,7 +5,7 @@ import { api } from '../api/api';
 
 export const store = configureStore({
   reducer: {
-    inputRepo: inputRepoSliceReducer,
+    inputValue: inputRepoSliceReducer,
     [api.reducerPath]: api.reducer,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(api.middleware),

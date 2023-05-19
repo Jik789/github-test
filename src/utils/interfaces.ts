@@ -3,4 +3,21 @@ interface IButton {
   setClick: () => void;
 }
 
-export type { IButton };
+interface IRepoListInfo {
+  total_count: number;
+  items: IRepoItem[];
+}
+
+interface IRepoItem {
+  id: number;
+  name: string;
+  updated_at: string;
+  stargazers_count: number;
+  html_url: string;
+}
+
+interface IRepoPagination {
+  totalCountRepo: number;
+}
+
+export type { IButton, IRepoListInfo, IRepoPagination, IRepoItem };

@@ -1,14 +1,11 @@
-.inputSearch {
-  display: block;
-  background: #FFF;
-  padding: 10px 20px;
-  border-radius: 5px;
-  font-size: 20px;
-  box-shadow: 0 0 3px #000;
-  align-self: center;
-  width: 85%;
-  &:active, &:hover, &:focus {
-    outline: 0;
-    outline-offset: 0;
-  }
+.repoItem {
+  display: flex;
+}
+
+.repoLink {
+  color: #000;
+}
+
+.tdStyle {
+  text-align: center;
 }
