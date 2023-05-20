@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { ITEM_FOR_PAGE } from '../utils/const';
-import { IRepoListInfo, ISearchAndPage } from '../utils/interfaces';
+import { IRepoItem, IRepoListInfo, ISearchAndPage, IUserAndRepo } from '../utils/interfaces';
 
 const api = createApi({
   baseQuery: fetchBaseQuery({
@@ -20,8 +20,13 @@ const api = createApi({
         }
       },
     }),
+    searchUserAndRepo: builder.query<IRepoItem, IUserAndRepo>({
+      query: (data) => {
+        return `/repos/${data.userName}/${data.repoName}`;
+      },
+    }),
   }),
 });
 
-export const { useSearchRepoQuery } = api;
+export const { useSearchRepoQuery, useSearchUserAndRepoQuery } = api;
 export { api };

@@ -10,7 +10,7 @@ import Loader from '../../components/Loader/Loader';
 
 function MainPage() {
   const inputSelector = useAppSelector((state) => state.inputValue);
-  const timeoutInput = useDebounce(inputSelector.inputName, 1000);
+  const timeoutInput = useDebounce(inputSelector.inputName, 500);
 
   const { isLoading, data } = useSearchRepoQuery({
     inputSearch: timeoutInput ?? '',

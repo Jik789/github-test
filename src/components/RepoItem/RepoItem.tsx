@@ -2,6 +2,7 @@ import { IRepoItem } from '../../utils/interfaces';
 import styles from './RepoItem.module.scss';
 import starIcon from '../../assets/star-icon.png';
 import { formatDate, removeProtocol } from '../../utils/utls';
+import { Link } from 'react-router-dom';
 
 interface IRepoItemProps {
   item: IRepoItem;
@@ -10,7 +11,9 @@ interface IRepoItemProps {
 function RepoItem({ item }: IRepoItemProps) {
   return (
     <tr>
-      <td className={styles.tdStyle}>{item.name ?? '-'}</td>
+      <td className={`${styles.tdStyle} ${styles.nameStyle}`}>
+        <Link to={`/${item.owner.login}/${item.name}`}>{item.name ?? '-'}</Link>
+      </td>
       <td className={`${styles.tdStyle} ${styles.starContainer}`}>
         <img src={starIcon} alt="star" className={styles.starIcon} />
         {item.stargazers_count ?? '0'}

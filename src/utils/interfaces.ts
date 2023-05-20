@@ -11,6 +11,9 @@ interface IRepoListInfo {
 interface IRepoItem {
   id: number;
   name: string;
+  owner: { login: string; avatar_url: string; html_url: string };
+  language: string;
+  description: string;
   updated_at: string;
   stargazers_count: number;
   html_url: string;
@@ -25,4 +28,9 @@ interface ISearchAndPage {
   inputPage: string;
 }
 
-export type { IButton, IRepoListInfo, IRepoPagination, IRepoItem, ISearchAndPage };
+interface IUserAndRepo {
+  userName: string;
+  repoName: string;
+}
+
+export type { IButton, IRepoListInfo, IRepoPagination, IRepoItem, ISearchAndPage, IUserAndRepo };
