@@ -1,7 +1,30 @@
-.repoItem {
-  max-width: 500px;
-  margin: 0 auto;
+.pagiList {
   display: flex;
-  gap: 10px;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.pagiItem {
+  border: none;
+  background-color: #f2f2f2;
+  color: #333;
+  padding: 8px 12px;
+  margin: 0 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.pagiItem:hover {
+  background-color: #ddd;
+}
+
+.pagiItem.active {
+  background-color: #333;
+  color: #fff;
+}
+
+.separator {
+  margin: 0 4px;
+  color: #999;
 }

@@ -1,26 +1,33 @@
+import { useEffect } from 'react';
 import { useSearchRepoQuery } from '../../api/api';
 import Pagination from '../../components/Pagination/Pagination';
 import RepoList from '../../components/RepoList/RepoList';
 import SearchPanel from '../../components/SearchPanel/SearchPanel';
 import { useDebounce } from '../../hooks/useDebounce';
-import { inputName } from '../../store/features/inputRepoSlice';
-import { useAppDispatch, useAppSelector } from '../../store/store';
+import { useAppSelector } from '../../store/store';
 import styles from './MainPage.module.scss';
 
 function MainPage() {
-  const InputSelector = useAppSelector((state) => state.inputValue);
-  const dispatch = useAppDispatch();
-  const timeoutInput = useDebounce(InputSelector.inputName, 3000);
-  const { data } = useSearchRepoQuery(timeoutInput);
+  const inputSelector = useAppSelector((state) => state.inputValue);
+  const timeoutInput = useDebounce(inputSelector.inputName, 1000);
 
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    dispatch(inputName(event.target.value));
-  };
+  const { data } = useSearchRepoQuery({
+    inputSearch: timeoutInput ?? '*',
+    inputPage: inputSelector.inputPage ?? '1',
+  });
+
+  useEffect(() => {
+    localStorage.setItem('searchInput', inputSelector.inputName);
+  }, [inputSelector.inputName]);
+
+  useEffect(() => {
+    localStorage.setItem('currentPage', inputSelector.inputPage);
+  }, [inputSelector.inputPage]);
 
   return (
     <div className={styles.mainContainer}>
       <h1 className={styles.titleText}>Поиск GitHub</h1>
-      <SearchPanel input={handleInputChange}></SearchPanel>
+      <SearchPanel></SearchPanel>
       <RepoList itemList={data?.items || []}></RepoList>
       <Pagination totalCountRepo={data?.total_count || 0}></Pagination>
     </div>

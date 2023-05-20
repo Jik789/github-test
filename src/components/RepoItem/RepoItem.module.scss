@@ -9,3 +9,14 @@
 .tdStyle {
   text-align: center;
 }
+
+.starContainer {
+  display: flex;
+  align-items: center;
+}
+
+.starIcon {
+  width: 16px;
+  height: 16px;
+  margin-right: 5px; /* Укажите желаемое значение отступа */
+}

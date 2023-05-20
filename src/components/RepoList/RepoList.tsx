@@ -9,16 +9,20 @@ interface IRepoItemListProps {
 function RepoList({ itemList }: IRepoItemListProps) {
   return (
     <table className={styles.table}>
-      <thead>
-        <tr>
-          <th>Название репозитория</th>
-          <th>Количество звезд</th>
-          <th>Дата последнего коммита</th>
-          <th>Ссылка на репозиторий</th>
-        </tr>
-      </thead>
+      {itemList.length > 0 && (
+        <thead>
+          <tr>
+            <th>Название репозитория</th>
+            <th>Количество звезд</th>
+            <th>Дата последнего коммита</th>
+            <th>Ссылка на репозиторий</th>
+          </tr>
+        </thead>
+      )}
       <tbody>
-        {itemList ? itemList.map((item) => <RepoItem item={item} key={item.id} />) : []}
+        {itemList.map((item) => (
+          <RepoItem item={item} key={item.id} />
+        ))}
       </tbody>
     </table>
   );

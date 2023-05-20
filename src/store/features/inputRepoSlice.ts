@@ -7,8 +7,8 @@ export interface inputRepoState {
 }
 
 const initialState: inputRepoState = {
-  inputName: '',
-  inputPage: '1',
+  inputName: localStorage.getItem('searchInput') ?? '*',
+  inputPage: localStorage.getItem('currentPage') ?? '1',
 };
 
 export const inputRepoSlice = createSlice({

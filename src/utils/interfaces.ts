@@ -20,4 +20,9 @@ interface IRepoPagination {
   totalCountRepo: number;
 }
 
-export type { IButton, IRepoListInfo, IRepoPagination, IRepoItem };
+interface ISearchAndPage {
+  inputSearch: string;
+  inputPage: string;
+}
+
+export type { IButton, IRepoListInfo, IRepoPagination, IRepoItem, ISearchAndPage };
