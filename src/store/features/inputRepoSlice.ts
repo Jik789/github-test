@@ -7,7 +7,7 @@ export interface inputRepoState {
 }
 
 const initialState: inputRepoState = {
-  inputName: localStorage.getItem('searchInput') ?? '*',
+  inputName: localStorage.getItem('searchInput') ?? '',
   inputPage: localStorage.getItem('currentPage') ?? '1',
 };
 

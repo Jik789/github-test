@@ -26,9 +26,14 @@ function Pagination({ totalCountRepo }: IRepoPagination) {
   useEffect(() => {
     const savedPage = localStorage.getItem('currentPage');
     if (savedPage) {
-      dispatch(inputPage(savedPage));
+      const page = Number(savedPage);
+      if (page > countPage) {
+        dispatch(inputPage('1'));
+      } else {
+        dispatch(inputPage(savedPage));
+      }
     }
-  }, [dispatch]);
+  }, [countPage, dispatch]);
 
   return (
     <div className={styles.pagiList}>

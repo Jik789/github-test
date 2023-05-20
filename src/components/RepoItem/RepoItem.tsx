@@ -1,6 +1,5 @@
 import { IRepoItem } from '../../utils/interfaces';
 import styles from './RepoItem.module.scss';
-import { Link } from 'react-router-dom';
 import starIcon from '../../assets/star-icon.png';
 import { formatDate, removeProtocol } from '../../utils/utls';
 
@@ -18,9 +17,14 @@ function RepoItem({ item }: IRepoItemProps) {
       </td>
       <td className={styles.tdStyle}>{formatDate(item.updated_at ?? '-')}</td>
       <td>
-        <Link className={`${styles.tdStyle} ${styles.repoLink}`} to={`/`}>
+        <a
+          className={`${styles.tdStyle} ${styles.repoLink}`}
+          href={item.html_url}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           {removeProtocol(item.html_url)}
-        </Link>
+        </a>
       </td>
     </tr>
   );

@@ -12,7 +12,7 @@ function MainPage() {
   const timeoutInput = useDebounce(inputSelector.inputName, 1000);
 
   const { data } = useSearchRepoQuery({
-    inputSearch: timeoutInput ?? '*',
+    inputSearch: timeoutInput ?? '',
     inputPage: inputSelector.inputPage ?? '1',
   });
 

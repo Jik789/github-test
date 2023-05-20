@@ -13,7 +13,7 @@ const api = createApi({
   endpoints: (builder) => ({
     searchRepo: builder.query<IRepoListInfo, ISearchAndPage>({
       query: (data) => {
-        if (!data) {
+        if (!data.inputSearch) {
           return `/search/repositories?q=*&page=1&per_page=${ITEM_FOR_PAGE}`;
         } else {
           return `/search/repositories?q=${data.inputSearch}&page=${data.inputPage}&per_page=${ITEM_FOR_PAGE}`;
