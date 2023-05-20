@@ -4,6 +4,11 @@
 
 .repoLink {
   color: #000;
+  transition: 0.25s;
+}
+
+.repoLink:hover {
+  color: red;
 }
 
 .tdStyle {

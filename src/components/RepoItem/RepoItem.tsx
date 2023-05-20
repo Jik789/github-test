@@ -11,8 +11,10 @@ interface IRepoItemProps {
 function RepoItem({ item }: IRepoItemProps) {
   return (
     <tr>
-      <td className={`${styles.tdStyle} ${styles.nameStyle}`}>
-        <Link to={`/${item.owner.login}/${item.name}`}>{item.name ?? '-'}</Link>
+      <td className={styles.tdStyle}>
+        <Link className={styles.nameStyle} to={`/${item.owner.login}/${item.name}`}>
+          {item.name ?? '-'}
+        </Link>
       </td>
       <td className={`${styles.tdStyle} ${styles.starContainer}`}>
         <img src={starIcon} alt="star" className={styles.starIcon} />
