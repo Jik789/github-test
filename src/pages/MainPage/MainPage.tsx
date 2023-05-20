@@ -12,7 +12,7 @@ function MainPage() {
   const inputSelector = useAppSelector((state) => state.inputValue);
   const timeoutInput = useDebounce(inputSelector.inputName, 500);
 
-  const { isLoading, data } = useSearchRepoQuery({
+  const { isFetching, currentData } = useSearchRepoQuery({
     inputSearch: timeoutInput ?? '',
     inputPage: inputSelector.inputPage ?? '1',
   });
@@ -29,12 +29,18 @@ function MainPage() {
     <div className={styles.mainContainer}>
       <h1 className={styles.titleText}>Поиск GitHub</h1>
       <SearchPanel></SearchPanel>
-      {isLoading ? (
+      {isFetching ? (
         <Loader />
       ) : (
         <>
-          <RepoList itemList={data?.items || []}></RepoList>
-          <Pagination totalCountRepo={data?.total_count || 0}></Pagination>
+          {timeoutInput !== '' && currentData?.items.length === 0 ? (
+            <p className={styles.noResultsText}>Нет результатов поиска</p>
+          ) : (
+            <>
+              <RepoList itemList={currentData?.items || []}></RepoList>
+              <Pagination totalCountRepo={currentData?.total_count || 0}></Pagination>
+            </>
+          )}
         </>
       )}
     </div>

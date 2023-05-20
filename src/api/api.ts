@@ -5,10 +5,6 @@ import { IRepoItem, IRepoListInfo, ISearchAndPage, IUserAndRepo } from '../utils
 const api = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: 'https://api.github.com/',
-    prepareHeaders: (headers) => {
-      headers.set('authorization', `Bearer 123`);
-      return headers;
-    },
   }),
   endpoints: (builder) => ({
     searchRepo: builder.query<IRepoListInfo, ISearchAndPage>({
