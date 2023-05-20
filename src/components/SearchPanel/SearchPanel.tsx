@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { inputName } from '../../store/features/inputRepoSlice';
+import { inputName, inputPage } from '../../store/features/inputRepoSlice';
 import { useAppDispatch, useAppSelector } from '../../store/store';
 import styles from './SearchPanel.module.scss';
 
@@ -16,6 +16,7 @@ function SearchPanel() {
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     dispatch(inputName(event.target.value));
+    dispatch(inputPage('1'));
   };
 
   return (

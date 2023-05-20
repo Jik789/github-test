@@ -1,39 +1,25 @@
-import { useEffect } from 'react';
 import { inputPage } from '../../store/features/inputRepoSlice';
 import { useAppDispatch, useAppSelector } from '../../store/store';
-import { ITEM_FOR_PAGE } from '../../utils/const';
+import { ITEM_FOR_PAGE, MAX_PAGE } from '../../utils/const';
 import { IRepoPagination } from '../../utils/interfaces';
 import { numForArr, setCountPage } from '../../utils/utls';
 import styles from './Pagination.module.scss';
 
 function Pagination({ totalCountRepo }: IRepoPagination) {
   const inputSelector = useAppSelector((state) => state.inputValue);
-  const countPage = setCountPage(totalCountRepo);
+  const countPage = Math.min(setCountPage(totalCountRepo), MAX_PAGE);
   const paginationList = numForArr(countPage);
   const dispatch = useAppDispatch();
 
-  const currentPage = Number(inputSelector.inputPage);
-  const visiblePages = ITEM_FOR_PAGE;
-  const sidePages = Math.floor(visiblePages / 2);
+  const currentPage = Math.min(Number(inputSelector.inputPage), countPage);
+  const sidePages = Math.floor(ITEM_FOR_PAGE / 2);
   const startIndex = Math.max(currentPage - sidePages, 1);
-  const endIndex = Math.min(startIndex + visiblePages - 1, countPage);
+  const endIndex = Math.min(startIndex + ITEM_FOR_PAGE - 1, countPage);
   const visiblePaginationList = paginationList.slice(startIndex - 1, endIndex);
 
   const handlePageChange = (event: React.MouseEvent<HTMLInputElement>) => {
     dispatch(inputPage(event.currentTarget.value));
   };
-
-  useEffect(() => {
-    const savedPage = localStorage.getItem('currentPage');
-    if (savedPage) {
-      const page = Number(savedPage);
-      if (page > countPage) {
-        dispatch(inputPage('1'));
-      } else {
-        dispatch(inputPage(savedPage));
-      }
-    }
-  }, [countPage, dispatch]);
 
   return (
     <div className={styles.pagiList}>

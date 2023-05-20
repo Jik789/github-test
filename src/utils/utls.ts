@@ -1,10 +1,10 @@
-import { ITEM_FOR_PAGE } from './const';
+import { ITEM_FOR_PAGE, MAX_PAGE } from './const';
 
 const setCountPage = (itemCount: number) => Math.ceil(itemCount / ITEM_FOR_PAGE);
 
 const numForArr = (num: number) => {
   const arr = [];
-  for (let i = 0; i < num; i++) {
+  for (let i = 0; i < Math.min(num, MAX_PAGE); i++) {
     arr.push(i + 1);
   }
   return arr;
